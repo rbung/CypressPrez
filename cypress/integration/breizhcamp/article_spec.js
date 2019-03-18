@@ -72,13 +72,9 @@ describe('Article page', function() {
     })
   })
 
-  context.skip('In an authenticated context', function() {
+  context('In an authenticated context', function() {
     beforeEach(function() {
-      // TODO You can do better !
-      cy.visit('/login')
-      cy.get('input[type=email]').type('breizh@camp.fr')
-      cy.get('input[type=password]').type('Rennes1234{enter}')
-      cy.contains('BreizhCamp').should('be.visible')
+      cy.login('breizh@camp.fr', 'Rennes1234')
 
       cy.server()
       cy.route('/api/articles/*', 'fixture:/article/cypress-is-cool.json').as(

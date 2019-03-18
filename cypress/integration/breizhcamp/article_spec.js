@@ -26,20 +26,43 @@ describe('Article page', function() {
         .should('contain', 'JavaScript is cool too ! ❤️')
     })
 
-    it.skip('should display nothing when the article is not found', function() {
-      // TODO Simulate a 404
+    it('should display nothing when the article is not found', function() {
+      cy.server()
+      cy.route({
+        url: '/api/articles/**',
+        response: { status: '404', error: 'Not Found' },
+        status: 404,
+      }).as('getArticle')
+
       cy.visit('/article/unknown-oni8y2')
       cy.get('.navbar').should('exist')
     })
 
-    it.skip('should display nothing when server internal error', function() {
-      // TODO Simulate a 500
+    it('should display nothing when server internal error', function() {
+      cy.server()
+      cy.route({
+        url: '/api/articles/**',
+        response: { status: '500', error: 'Internal error' },
+        status: 500,
+      }).as('getArticle')
+
       cy.visit('/article/internal-error-oni8y2')
       cy.get('.navbar').should('exist')
     })
 
-    it.skip('should display after a long request', function() {
-      // Simulate a delay for each request 🐢
+    it('should display after a long request', function() {
+      cy.server()
+      cy.route({
+        url: '/api/articles/*',
+        response: 'fixture:/article/cypress-is-cool.json',
+        delay: 500,
+      }).as('getArticle')
+      cy.route({
+        url: '/api/articles/*/comments',
+        response: 'fixture:/comments/cypress-is-cool.json',
+        delay: 2000,
+      }).as('getArticleComments')
+
       cy.visit('/article/article2-oni8y2')
       cy.get('h1').should('contain', 'Cypress is cool')
       cy.get('.author').should('contain', 'Brice')

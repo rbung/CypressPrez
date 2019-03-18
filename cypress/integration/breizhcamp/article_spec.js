@@ -1,7 +1,14 @@
 describe('Article page', function() {
   context('In an anonymous context', function() {
-    it.skip('should display the article page', function() {
-      // TODO Let's do some stubbing 😎
+    it('should display the article page', function() {
+      cy.server()
+      cy.route('/api/articles/*', 'fixture:/article/cypress-is-cool.json').as(
+        'getArticle'
+      )
+      cy.route(
+        '/api/articles/*/comments',
+        'fixture:/comments/cypress-is-cool.json'
+      ).as('getArticleComments')
       cy.visit('/article/cypress-is-cool-oni8y2')
       cy.get('h1').should('contain', 'Cypress is cool')
       cy.get('.author').should('contain', 'Brice')

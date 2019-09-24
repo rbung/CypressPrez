@@ -1,4 +1,4 @@
-# Cypress Demo for BreizhCamp 2019
+# Cypress Demo for Agile Testing Night
 
 [![CircleCI](https://circleci.com/gh/rbung/CypressAgileTestingNight.svg?style=svg)](https://circleci.com/gh/rbung/CypressAgileTestingNight)
 

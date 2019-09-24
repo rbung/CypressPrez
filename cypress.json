@@ -1,4 +1,9 @@
 {
   "baseUrl": "http://localhost:4100",
+  "env": {
+    "email": "atn3@sgcib.com",
+    "name": "atn3",
+    "password": "atn3@sgcib.com"
+  },
   "projectId": "avk56w"
 }

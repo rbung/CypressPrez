@@ -36,9 +36,9 @@ describe('Login page', function() {
   })
 
   it('should redirect to homepage when logging is successful', function() {
-    cy.get('input[type=email]').type('breizh@camp.fr')
-    cy.get('input[type=password]').type('Rennes1234{enter}')
+    cy.get('input[type=email]').type(Cypress.env().email)
+    cy.get('input[type=password]').type(Cypress.env().password + '{enter}')
     cy.url().should('contain', '/')
-    cy.contains('BreizhCamp').should('exist')
+    cy.contains(Cypress.env().name).should('exist')
   })
 })

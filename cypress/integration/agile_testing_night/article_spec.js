@@ -74,7 +74,7 @@ describe('Article page', function() {
 
   context('In an authenticated context', function() {
     beforeEach(function() {
-      cy.login('breizh@camp.fr', 'Rennes1234')
+      cy.login(Cypress.env().email, Cypress.env().password)
 
       cy.server()
       cy.route('/api/articles/*', 'fixture:/article/cypress-is-cool.json').as(

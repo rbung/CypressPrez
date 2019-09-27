@@ -1,9 +1,9 @@
 {
   "baseUrl": "http://localhost:4100",
   "env": {
-    "email": "atn3@sgcib.com",
-    "name": "atn3",
-    "password": "atn3@sgcib.com"
+    "email": "agiletesting@night.fr",
+    "name": "agile testing night",
+    "password": "agile testing"
   },
   "projectId": "avk56w"
 }

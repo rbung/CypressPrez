@@ -1,9 +1,9 @@
 {
   "baseUrl": "http://localhost:4100",
   "env": {
-    "email": "agiletesting@night.fr",
-    "name": "agile testing night",
-    "password": "agile testing"
+    "email": "crafts@records.org",
+    "name": "Crafts Records",
+    "password": "Soleil123"
   },
-  "projectId": "avk56w"
+  "nodeVersion": "system"
 }

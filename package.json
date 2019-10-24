@@ -1,12 +1,12 @@
 {
-  "name": "cypress-agiletestingnight-conference",
+  "name": "cypress-prez",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
     "cross-env": "^6.0.0",
-    "cypress": "^3.4.1",
+    "cypress": "^3.5.0",
     "cypress-react-unit-test": "^2.4.3",
-    "react-scripts": "^3.1.2"
+    "react-scripts": "^3.2.0"
   },
   "dependencies": {
     "history": "^4.6.3",
@@ -30,7 +30,7 @@
     "test": "cross-env PORT=4100 react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run -s 'cypress/integration/agile_testing_night/**' --record --key 22b58609-c2d0-4902-8825-0b913b654f00"
+    "cypress:run": "cypress run -s 'cypress/integration/my-tests/**'"
   },
   "browserslist": {
     "production": [

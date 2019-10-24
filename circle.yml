@@ -8,7 +8,7 @@ workflows:
           build: 'npm run build'
       - cypress/run:
           record: true
-          spec: 'cypress/integration/agile_testing_night/**'
+          spec: 'cypress/integration/my-tests/**'
           start: 'npm start'
           wait-on: 'http://localhost:4100'
           group: '1 machine'
@@ -16,7 +16,7 @@ workflows:
             - cypress/install
       - cypress/run:
           record: true
-          spec: 'cypress/integration/agile_testing_night/**'
+          spec: 'cypress/integration/my-tests/**'
           start: 'npm start'
           wait-on: 'http://localhost:4100'
           parallel: true

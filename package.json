@@ -33,7 +33,8 @@
     "test": "cross-env PORT=4100 react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run -s 'cypress/integration/my-tests/**'"
+    "cypress:run": "cypress run -s 'cypress/integration/my-tests/**'",
+    "cypress:run:record": "cypress run -s 'cypress/integration/my-tests/**' --record --key 7bd7df0b-a573-4206-9a44-e3933a0e1953"
   },
   "browserslist": {
     "production": [

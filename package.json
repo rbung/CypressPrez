@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "@cypress/code-coverage": "^1.11.0",
     "cross-env": "^6.0.0",
     "cypress": "^3.8.3",
     "cypress-react-unit-test": "^2.4.3",
+    "istanbul-lib-coverage": "^3.0.0",
+    "nyc": "^15.0.0",
     "react-scripts": "^3.3.0"
   },
   "dependencies": {
+    "@cypress/instrument-cra": "^1.0.0",
     "history": "^4.6.3",
     "marked": "^0.7.0",
     "react": "^16.3.0",
@@ -24,6 +28,7 @@
   },
   "scripts": {
     "start": "cross-env PORT=4100 react-scripts start",
+    "start:coverage": "cross-env PORT=4100 react-scripts -r @cypress/instrument-cra start",
     "build": "react-scripts build",
     "test": "cross-env PORT=4100 react-scripts test --env=jsdom",
     "eject": "react-scripts eject",

@@ -1,13 +1,8 @@
 describe('Login page', function() {
-  beforeEach(function() {
-    cy.visit('/login')
-  })
-
-  function shouldShowErrorMessage() {
-    cy.contains('email or password is invalid').should('be.visible')
-  }
+  // TODO Refactor me to avoid duplication ! 😏
 
   it('should display nicely', function() {
+    cy.visit('/login')
     cy.contains('Sign In').should('exist')
     cy.get('input[type=email]').should('be.visible')
     cy.get('input[type=password]').should('be.visible')
@@ -15,27 +10,32 @@ describe('Login page', function() {
   })
 
   it('should display error message when empty email and password are submitted', function() {
+    cy.visit('/login')
     cy.get('button[type=submit]').click()
-    shouldShowErrorMessage()
+    cy.contains('email or password is invalid').should('be.visible')
   })
 
   it('should display error message when password is empty', function() {
+    cy.visit('/login')
     cy.get('input[type=email]').type('test@test.com{enter}')
-    shouldShowErrorMessage()
+    cy.contains('email or password is invalid').should('be.visible')
   })
 
   it('should display error message when email is empty', function() {
+    cy.visit('/login')
     cy.get('input[type=password]').type('password{enter}')
-    shouldShowErrorMessage()
+    cy.contains('email or password is invalid').should('be.visible')
   })
 
   it('should display error message when login failed', function() {
+    cy.visit('/login')
     cy.get('input[type=email]').type('test@test.com')
     cy.get('input[type=password]').type('wrong{enter}')
-    shouldShowErrorMessage()
+    cy.contains('email or password is invalid').should('be.visible')
   })
 
   it('should redirect to homepage when logging is successful', function() {
+    cy.visit('/login')
     cy.get('input[type=email]').type(Cypress.env().email)
     cy.get('input[type=password]').type(Cypress.env().password + '{enter}')
     cy.url().should('contain', '/')

@@ -1,14 +1,8 @@
 describe('Article page', function() {
   context('In an anonymous context', function() {
-    it('should display the article page', function() {
-      cy.server()
-      cy.route('/api/articles/*', 'fixture:/article/cypress-is-cool.json').as(
-        'getArticle'
-      )
-      cy.route(
-        '/api/articles/*/comments',
-        'fixture:/comments/cypress-is-cool.json'
-      ).as('getArticleComments')
+    it.skip('should display the article page', function() {
+      // TODO Let's do some stubbing 😎
+
       cy.visit('/article/cypress-is-cool-oni8y2')
       cy.get('h1').should('contain', 'Cypress is cool')
       cy.get('.author').should('contain', 'Brice')
@@ -26,7 +20,7 @@ describe('Article page', function() {
         .should('contain', 'JavaScript is cool too ! ❤️')
     })
 
-    it('should display nothing when the article is not found', function() {
+    it.skip('should display nothing when the article is not found', function() {
       cy.server()
       cy.route({
         url: '/api/articles/**',
@@ -38,7 +32,7 @@ describe('Article page', function() {
       cy.get('.navbar').should('exist')
     })
 
-    it('should display nothing when server internal error', function() {
+    it.skip('should display nothing when server internal error', function() {
       cy.server()
       cy.route({
         url: '/api/articles/**',
@@ -50,7 +44,7 @@ describe('Article page', function() {
       cy.get('.navbar').should('exist')
     })
 
-    it('should display after a long request', function() {
+    it.skip('should display after a long request', function() {
       cy.server()
       cy.route({
         url: '/api/articles/*',
@@ -72,13 +66,17 @@ describe('Article page', function() {
     })
   })
 
-  context('In an authenticated context', function() {
+  context.skip('In an authenticated context', function() {
     beforeEach(function() {
-      cy.login(Cypress.env().email, Cypress.env().password)
+      // TODO You can do better !
+      cy.visit('/login')
+      cy.get('input[type=email]').type(Cypress.env().email)
+      cy.get('input[type=password]').type(Cypress.env().password + '{enter}')
+      cy.contains(Cypress.env().name).should('exist')
 
       cy.server()
       cy.route('/api/articles/*', 'fixture:/article/cypress-is-cool.json').as(
-        'getArticle'
+        'getArticle',
       )
       cy.route('/sockjs-node/**', {})
       cy.visit('/article/cypress-is-cool-oni8y2')
@@ -87,7 +85,7 @@ describe('Article page', function() {
     it('should display the article page', function() {
       cy.route(
         '/api/articles/*/comments',
-        'fixture:/comments/cypress-is-cool.json'
+        'fixture:/comments/cypress-is-cool.json',
       ).as('getArticleComments')
       cy.get('h1').should('contain', 'Cypress is cool')
       cy.get('.author').should('contain', 'Brice')
@@ -146,7 +144,7 @@ describe('Article page', function() {
     it('should allow user to delete his comment', function() {
       cy.route(
         '/api/articles/*/comments',
-        'fixture:/comments/cypress-is-cool-delete.json'
+        'fixture:/comments/cypress-is-cool-delete.json',
       ).as('getArticleComments')
       cy.route({
         url: '/api/articles/*/comments/*',

@@ -7,6 +7,7 @@
     "cross-env": "^6.0.0",
     "cypress": "^4.1.0",
     "cypress-react-unit-test": "^2.4.3",
+    "eslint-plugin-cypress": "^2.10.3",
     "istanbul-lib-coverage": "^3.0.0",
     "nyc": "^15.0.0",
     "react-scripts": "^3.4.0"

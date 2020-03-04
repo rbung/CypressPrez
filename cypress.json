@@ -3,7 +3,8 @@
   "env": {
     "email": "crafts@records.org",
     "name": "Crafts Records",
-    "password": "Soleil123"
+    "password": "Soleil123",
+    "coverage": false
   },
   "nodeVersion": "system",
   "projectId": "bc3zch"

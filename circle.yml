@@ -7,12 +7,28 @@ workflows:
       - cypress/install:
           build: 'npm run build'
       - cypress/run:
-          record: true
-          spec: 'cypress/integration/my-tests/**'
-          start: 'npm start'
-          wait-on: 'http://localhost:4100'
-          parallel: true
-          parallelism: 4
-          group: 'with 4 machines'
+          name: Chrome
           requires:
             - cypress/install
+          executor: cypress/browsers-chrome78-ff70
+          record: true
+          start: npm start
+          wait-on: http://localhost:4100
+          parallel: true
+          parallelism: 4
+          group: chrome
+          browser: chrome
+          spec: 'cypress/integration/my-tests/**'
+      - cypress/run:
+          name: Firefox
+          requires:
+            - cypress/install
+          executor: cypress/browsers-chrome78-ff70
+          record: true
+          start: npm start
+          wait-on: http://localhost:4100
+          parallel: true
+          parallelism: 2
+          group: firefox
+          browser: firefox
+          spec: 'cypress/integration/my-tests/1_critical**'

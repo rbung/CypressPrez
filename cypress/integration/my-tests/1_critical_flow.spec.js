@@ -17,7 +17,7 @@ describe('Navigation', function() {
     cy.visit('/')
     cy.get('.preview-link > h1')
       .eq(2)
-      .click()
+      .click({ force: true })
     cy.url().should('contain', 'article')
     cy.get('.banner').should('exist')
     cy.get('.article-content').should('exist')

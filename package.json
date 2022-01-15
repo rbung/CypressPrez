@@ -15,7 +15,7 @@
   "dependencies": {
     "@cypress/instrument-cra": "^1.0.0",
     "history": "^4.6.3",
-    "marked": "^0.7.0",
+    "marked": "^4.0.10",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
     "react-redux": "^5.0.7",
